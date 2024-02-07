@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { HousingService } from '../housing.service';
 import { HousingLocation } from '../housinglocation';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-details',
   standalone: true, 
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule],
   template: `
     <article>
       <img
@@ -30,7 +31,7 @@ import { HousingLocation } from '../housinglocation';
       </section>
       <section class="listing-apply">
         <h2 class="section-heading">Apply now to live here</h2>
-        <form>
+        <form [formGroup]="applyForm">
           <label for="first-name">First Name</label> 
           <input id="first-name" type="text" formControlName="firstName">
 
@@ -50,6 +51,12 @@ export class DetailsComponent {
   route: ActivatedRoute = inject(ActivatedRoute);
   housingService = inject(HousingService);
   housingLocation: HousingLocation | undefined;
+
+  applyForm = new FormGroup({
+    firstName: new FormControl(''),   
+    lastName: new FormControl(''),
+    email: new FormControl('')
+  }); 
 
   constructor() {
     const housingLocationId = Number(this.route.snapshot.params['id']);
