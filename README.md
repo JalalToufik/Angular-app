@@ -4,18 +4,20 @@
 
 * Hier ga ik mijn eerste Angular app ontwikkelen aan de hand van de [Angular-tutorial](https://angular.dev/tutorials/first-app).
 
-* Install Angular 
+  ## Install Angular
+
+1.Install  
 
 `npm install -g @angular/cli`
 
-* Make a folder
+2.Make a folder
 
 `cd my-app`
 
-* Install the depencies
+3.Install the depencies
 
 `npm install`
 
-* Run the application
+4.Run the application
 
 `ng serve`
