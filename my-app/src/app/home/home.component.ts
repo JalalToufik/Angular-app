@@ -10,9 +10,9 @@ import { HousingService } from '../housing.service';
   imports: [CommonModule, HousingLocationComponent],
   template: `
     <section>
-      <form>
+      <form (submit)="$event.preventDefault(); filterResults(filter.value)">
         <input type="text" placeholder="Filter by city" #filter />
-        <button class="primary" type="button"(click)="filterResults(filter.value)">Search</button>
+        <button class="primary" type="submit">Search</button>
       </form>
     </section>
     <section class="results">
