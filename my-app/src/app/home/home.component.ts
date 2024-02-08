@@ -22,7 +22,7 @@ import { HousingService } from '../housing.service';
       ></app-housing-location> 
   </section>
 `,
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.css'  
 })
 
 export class HomeComponent {
@@ -33,7 +33,12 @@ export class HomeComponent {
   (HousingService);
 
   constructor() {
-    this.housingLocationList = this.housingService.getAllHousingLocations();
+    this.housingService.getAllHousingLocations().then((housingLocationList: HousingLocation[]) => {
+      this.housingLocationList = housingLocationList;
+    });
+    
   }
 
 }
+
+
